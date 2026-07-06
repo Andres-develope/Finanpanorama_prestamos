@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin - Clientes | FINANPANORAMA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/admin-clientes.css">
+</head>
+
+<body>
+    <!-- Admin Header -->
+    <div class="admin-header">
+        <div class="container">
+            <div class="admin-title">
+                <a href="/" class="logo" style="text-decoration: none;">
+                    <img src="/images/logo.png" alt="Logo" style="width:40px;height:40px;border-radius:10px;">
+                    <span>FINANPANORAMA</span>
+                </a>
+                <span class="admin-badge">ADMIN</span>
+            </div>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <span style="color: var(--text-muted);">👤 <span id="adminUser">admin</span></span>
+                <button class="btn btn-secondary" onclick="logout()" style="padding: 0.5rem 1rem;">
+                    Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="padding: 2rem 2rem 3rem;">
+        <h1 style="margin-bottom: 0.5rem;">Panel de Administración</h1>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Gestión de clientes y préstamos</p>
+
+        <!-- Stats -->
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card">
+                <div class="stat-value" id="statTotal">-</div>
+                <div class="stat-label">Total Clientes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="statAprobados">-</div>
+                <div class="stat-label">Documentos Firmados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="statPendientes">-</div>
+                <div class="stat-label">Pendientes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="statMonto">-</div>
+                <div class="stat-label">Monto Total</div>
+            </div>
+        </div>
+
+        <!-- Search -->
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Buscar por nombre o documento..."
+                onkeyup="filterClientes()">
+        </div>
+
+        <!-- Table -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Documento</th>
+                        <th>Celular</th>
+                        <th>Monto</th>
+                        <th>Estado</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="clientesBody">
+                    <tr>
+                        <td colspan="8" style="text-align: center; padding: 3rem;">
+                            Cargando...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <div class="empty-icon">📋</div>
+            <h3>No hay clientes registrados</h3>
+            <p style="color: var(--text-muted);">Los clientes aparecerán aquí cuando envíen solicitudes.</p>
+        </div>
+    </div>
+
+    <script src="/js/admin-clientes.js"></script>
+</body>
+
+</html>

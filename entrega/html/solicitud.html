@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Solicitud - FINANPANORAMA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body style="background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%); min-height: 100vh;">
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/images/logo.png" alt="Logo"
+                    style="width:40px;height:40px;border-radius:10px;"><span>FINANPANORAMA</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/" class="nav-link">Inicio</a></li>
+                <li><a href="/solicitud" class="nav-link active">Enviar solicitud</a></li>
+                <li><a href="/contacto" class="nav-link">Contacto</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <div class="breadcrumb"><a href="/">Home</a><span>›</span><span>Crear solicitud</span></div>
+            <h1 class="page-title">Crear solicitud</h1>
+        </div>
+    </div>
+
+    <div class="container" style="padding-bottom: 3rem;">
+        <div class="form-container">
+            <form id="solicitudForm">
+                <!-- Datos Personales -->
+                <div class="form-section">
+                    <h3 class="form-section-title">📋 Datos Personales</h3>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre" class="required">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido" class="required">Apellido</label>
+                            <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="required">Correo electrónico</label>
+                        <input type="email" id="email" name="email" placeholder="ejemplo@email.com" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tipoDocumento" class="required">Tipo de documento</label>
+                            <select id="tipoDocumento" name="tipoDocumento" required>
+                                <option value="CC">Cédula ciudadanía</option>
+                                <option value="CE">Cédula extranjería</option>
+                                <option value="PA">Pasaporte</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="numeroDocumento" class="required">Numero de identificación</label>
+                            <input type="text" id="numeroDocumento" name="numeroDocumento" placeholder="1234567890"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="celular" class="required">Numero de celular</label>
+                        <input type="tel" id="celular" name="celular" placeholder="300 123 4567" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="direccion" class="required">Dirección</label>
+                        <input type="text" id="direccion" name="direccion" placeholder="Tu dirección" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="ciudad" class="required">Ciudad</label>
+                            <input type="text" id="ciudad" name="ciudad" placeholder="Ciudad" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa">Empresa en que labora</label>
+                            <input type="text" id="empresa" name="empresa" placeholder="Opcional">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Referencia (Opcional) -->
+                <div class="form-section">
+                    <h3 class="form-section-title">👤 Referencia Personal (Opcional)</h3>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="refNombre">Nombre completo</label>
+                            <input type="text" id="refNombre" name="refNombre" placeholder="Nombre de la referencia">
+                        </div>
+                        <div class="form-group">
+                            <label for="refCelular">Celular</label>
+                            <input type="tel" id="refCelular" name="refCelular" placeholder="300 123 4567">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="refParentesco">Parentesco</label>
+                        <select id="refParentesco" name="refParentesco">
+                            <option value="">Seleccione...</option>
+                            <option value="familiar">Familiar</option>
+                            <option value="amigo">Amigo</option>
+                            <option value="compañero">Compañero de trabajo</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Cantidad -->
+                <div class="form-section">
+                    <h3 class="form-section-title">💰 Información del Préstamo</h3>
+
+                    <div class="form-group">
+                        <label for="cantidad" class="required">Cantidad</label>
+                        <input type="number" id="cantidad" name="cantidad" placeholder="Monto a solicitar" min="100000"
+                            required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                    Enviar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer-dark">
+        <div class="container">
+            <div class="footer-links-center">
+                <a href="/">Inicio</a><span>|</span>
+                <a href="/solicitud">Enviar solicitud</a><span>|</span>
+                <a href="/contacto">Contacto</a>
+            </div>
+            <p class="footer-copyright">FINANPANORAMA © 2025 - Tu Panorama Financiero</p>
+        </div>
+    </footer>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="/js/solicitud.js"></script>
+</body>
+
+</html>

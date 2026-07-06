@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Registro Exitoso! - FINANPANORAMA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/exito.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/images/logo.png" alt="Logo" style="width:40px;height:40px;border-radius:10px;">
+                <span>FINANPANORAMA</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="success-container">
+        <div class="success-card">
+            <div class="success-icon">✓</div>
+            <h1 class="success-title">¡Registro Exitoso!</h1>
+            <p class="success-subtitle">
+                Tu solicitud de préstamo ha sido registrada y firmada correctamente.
+            </p>
+
+            <div class="success-details">
+                <div class="detail-item">
+                    <span class="detail-label">Nombre:</span>
+                    <span class="detail-value" id="clienteNombre">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Documento:</span>
+                    <span class="detail-value" id="clienteDocumento">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Monto solicitado:</span>
+                    <span class="detail-value" id="clienteMonto">-</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Estado:</span>
+                    <span class="detail-value" style="color: #10b981;">✓ Firmado</span>
+                </div>
+            </div>
+
+            <div class="success-message">
+                <p>
+                    📩 Hemos recibido tu información. Nos pondremos en contacto contigo
+                    pronto para continuar con el proceso de tu préstamo.
+                </p>
+            </div>
+
+            <a href="/" class="btn-home">Volver al Inicio</a>
+        </div>
+    </div>
+
+    <div class="confetti" id="confetti"></div>
+
+    <script src="/js/exito.js"></script>
+</body>
+
+</html>

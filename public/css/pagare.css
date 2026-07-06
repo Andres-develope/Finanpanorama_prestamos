@@ -1,0 +1,491 @@
+/* ==========================================
+   FINANPANORAMA - PAGARE
+   Estilos del contrato y pagare
+   ========================================== */
+* {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f5f5;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .pagare-header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #0d47a1 100%);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .pagare-logo {
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .btn-firmar {
+            color: #06b6d4;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Document Container */
+        .document-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .document-card {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .doc-section {
+            padding: 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .doc-section:last-child {
+            border-bottom: none;
+        }
+
+        /* Title */
+        .doc-title {
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: #1e293b;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+        }
+
+        .doc-instruction {
+            color: #6b7280;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Document Content */
+        .doc-subtitle {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #1e293b;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .doc-text {
+            color: #374151;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .doc-text strong {
+            text-decoration: underline;
+        }
+
+        .doc-clause {
+            margin-bottom: 1rem;
+        }
+
+        .doc-clause-title {
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        /* Two Column Layout */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .column-item {
+            margin-bottom: 1rem;
+        }
+
+        .column-label {
+            color: #0891b2;
+            font-size: 0.9rem;
+        }
+
+        .column-value {
+            color: #1e293b;
+            text-decoration: underline;
+        }
+
+        /* Signature Section */
+        .signature-container {
+            padding: 2rem;
+            background: #0f172a;
+            text-align: center;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .signature-label {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .signature-line {
+            border: 3px solid #00c9a7;
+            border-radius: 12px;
+            height: 280px;
+            max-width: 100%;
+            margin: 0 auto 1rem;
+            position: relative;
+            background: #fff;
+            cursor: crosshair;
+        }
+
+        .signature-line canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 6px;
+        }
+
+        .signature-x {
+            position: absolute;
+            bottom: 10px;
+            left: 15px;
+            color: #9ca3af;
+            font-size: 1.25rem;
+        }
+
+        .signed-info {
+            color: #0891b2;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .signed-date {
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+
+        /* Certificate Section */
+        .certificate-section {
+            padding: 2rem;
+            background: #fff;
+        }
+
+        .certificate-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-subtitle {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-id {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #6b7280;
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+        }
+
+        .certificate-id .lock {
+            color: #10b981;
+        }
+
+        /* Signer Info */
+        .signer-card {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1.5rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .signer-avatar {
+            width: 80px;
+            height: 80px;
+            background: #e5e7eb;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #9ca3af;
+        }
+
+        .signer-details h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .signer-details p {
+            color: #0891b2;
+            font-size: 0.85rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .signer-firma-box {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .signer-firma-label {
+            color: #6b7280;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .signer-firma-img {
+            max-height: 50px;
+        }
+
+        /* Multi-Factor */
+        .multifactor-section {
+            background: #e0f2fe;
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .multifactor-label {
+            font-size: 0.85rem;
+        }
+
+        .multifactor-label span {
+            display: block;
+            font-weight: 600;
+        }
+
+        .multifactor-code {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #374151;
+        }
+
+        .barcode-img svg {
+            height: 40px;
+        }
+
+        /* Audit Trail */
+        .audit-section {
+            padding: 2rem;
+        }
+
+        .audit-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .audit-table th {
+            text-align: left;
+            padding: 1rem 0;
+            border-bottom: 2px solid #e5e7eb;
+            color: #374151;
+            font-weight: 600;
+        }
+
+        .audit-table td {
+            padding: 1rem 0;
+            border-bottom: 1px solid #f3f4f6;
+            vertical-align: top;
+        }
+
+        .audit-table td:first-child {
+            color: #6b7280;
+            width: 200px;
+        }
+
+        .audit-table td:last-child {
+            color: #374151;
+        }
+
+        /* QR Section */
+        .qr-section {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            padding: 2rem;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            margin: 2rem;
+            border-radius: 4px;
+        }
+
+        .qr-code {
+            flex-shrink: 0;
+        }
+
+        .qr-text {
+            color: #6b7280;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .pagare-footer {
+            background: #1e293b;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            bottom: 0;
+        }
+
+        .btn-volver {
+            color: #06b6d4;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .btn-print {
+            background: #0891b2;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-print:hover {
+            background: #0e7490;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+
+        .btn-sign {
+            background: linear-gradient(135deg, #00e5a0 0%, #06b6d4 100%);
+            color: #0a0f1a;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            flex: 1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-sign:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 229, 160, 0.4);
+        }
+
+        .btn-clear {
+            background: #1e293b;
+            color: #f1f5f9;
+            border: 1px solid #334155;
+            padding: 0.85rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-clear:hover {
+            background: #334155;
+        }
+
+        .signed-message {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .signed-message.visible {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .document-wrapper {
+                padding: 1rem;
+            }
+
+            .doc-section {
+                padding: 1.5rem;
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .signer-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .multifactor-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .qr-section {
+                flex-direction: column;
+            }
+        }
+
+        @media print {
+
+            .pagare-header,
+            .pagare-footer,
+            .action-buttons,
+            .btn-clear {
+                display: none !important;
+            }
+
+            body {
+                background: #fff;
+            }
+
+            .document-card {
+                box-shadow: none;
+            }
+        }
