@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casos de Prueba - Proyecto PrestaFácil / Finanpanorama</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #006747;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #006747;
+            color: white;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            background-color: #006747;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            margin: 0;
+            border-radius: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #006747;
+            color: white;
+            margin-top: 40px;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #006747;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .estado-aprobado {
+            color: #006747;
+            font-weight: bold;
+        }
+
+        .estado-pendiente {
+            color: #b8860b;
+            font-weight: bold;
+        }
+
+        /* Espacio para el logo */
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            max-width: 150px;
+        }
+
+        /* Sección para los realizadores */
+        .realizadores {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .realizadores p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Espacio para el logo de la empresa -->
+        <div class="logo">
+            <img src="https://www.sena.edu.co/Style%20Library/alayout/images/logoSena.png" alt="Logo SENA">
+        </div>
+
+        <h1>Casos de Prueba - Proyecto PrestaFácil / Finanpanorama</h1>
+
+        <!-- Sección de Introducción -->
+        <div class="section">
+            <h2 class="section-title">1. Introducción</h2>
+            <p>Este documento define los casos de prueba y el ambiente de pruebas para la aplicación <strong>PrestaFácil</strong>, un sistema de gestión de préstamos personales desarrollado en Node.js, Express y MySQL. La aplicación permite a los clientes registrar solicitudes de crédito, firmar digitalmente el pagaré, y recibir notificaciones de confirmación por correo electrónico. Además, los administradores cuentan con un panel protegido por autenticación para consultar, actualizar y gestionar las solicitudes de los clientes.</p>
+        </div>
+
+        <!-- Sección de Alcance de las Pruebas -->
+        <div class="section">
+            <h2 class="section-title">2. Alcance de las pruebas (Qué se va a probar)</h2>
+            <table>
+                <tr>
+                    <th>a. Código del Ticket</th>
+                    <td>GA9-220501096-AA1-EV01</td>
+                </tr>
+                <tr>
+                    <th>b. Descripción de la historia</th>
+                    <td>La historia de usuario describe la funcionalidad de registrar una solicitud de crédito (datos personales, monto solicitado), firmar digitalmente el pagaré, recibir un correo de confirmación, y permitir que un administrador autenticado consulte, actualice o elimine las solicitudes desde un panel privado.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Sección de Fuera de Alcance -->
+        <div class="section">
+            <h2 class="section-title">3. Fuera de Alcance</h2>
+            <ul>
+                <li><strong>Pruebas de rendimiento:</strong> No se realizará un análisis exhaustivo de la capacidad del sistema para manejar cargas pesadas, múltiples usuarios simultáneos o estrés de alta carga, ya que el proyecto se encuentra en fase académica/piloto con bajo volumen de tráfico.</li>
+                <li><strong>Pruebas de seguridad avanzadas:</strong> Las pruebas de penetración profesional (pentesting) y el escaneo exhaustivo de vulnerabilidades no serán cubiertas en esta fase; solo se validan controles básicos de autenticación y validación de entradas.</li>
+            </ul>
+        </div>
+
+        <!-- Sección de Tipos de Prueba -->
+        <div class="section">
+            <h2 class="section-title">4. Tipos de prueba / Estrategia (Cómo ejecutar las pruebas)</h2>
+            <ul>
+                <li><strong>Pruebas unitarias automatizadas (Jest):</strong> Se probó la lógica de los controladores de autenticación y de clientes de forma aislada, usando mocks para simular la base de datos y los servicios externos.</li>
+                <li><strong>Pruebas funcionales / manuales basadas en historias de usuario:</strong> Se ejecutaron peticiones reales a la API (login, registro de clientes, firma digital, CRUD) usando PowerShell/Postman, verificando los códigos de respuesta HTTP y los datos devueltos.</li>
+                <li><strong>Cross-browser testing (Múltiples navegadores):</strong> Se probarán las vistas públicas (formulario de solicitud, panel admin) en navegadores como Chrome, Firefox y Edge.</li>
+                <li><strong>Cross mobile testing (Emulado con Chrome):</strong> Se emulará la aplicación en dispositivos móviles mediante las herramientas de desarrollo de Chrome, dado que el formulario de solicitud debe ser accesible desde celular.</li>
+            </ul>
+        </div>
+
+        <!-- Sección de Ambiente de prueba -->
+        <div class="section">
+            <h2 class="section-title">5. Ambiente de prueba</h2>
+            <p>La prueba se realizará en un ambiente local de desarrollo, ejecutando el servidor Node.js/Express de forma local, conectado a una base de datos MySQL de pruebas. La URL para las pruebas será la siguiente:</p>
+            <p><strong><a href="http://localhost:3000/" class="button">Acceder al Ambiente de Pruebas (localhost:3000)</a></strong></p>
+        </div>
+
+        <!-- Sección de Datos de Pruebas -->
+        <div class="section">
+            <h2 class="section-title">6. Datos de pruebas</h2>
+            <p>Los datos utilizados para las pruebas serán los siguientes:</p>
+            <table>
+                <tr>
+                    <th>Clientes</th>
+                    <td>Nombre: Laura Gómez QA | Documento: CC 999888777-QA | Correo: laura.qa.prueba@example.com | Celular: 3001234567 | Dirección: Calle Falsa 123, Bogotá | Monto solicitado: $1.000.000</td>
+                </tr>
+                <tr>
+                    <th>Administrador</th>
+                    <td>Usuario: admin | Contraseña: admin123 | Token de sesión generado: admin_lZWK4JTImGvkxLMYiNZrSkb1Vf6KduGG (ejemplo)</td>
+                </tr>
+                <tr>
+                    <th>Firma digital</th>
+                    <td>Imagen de firma en formato Base64 (PNG de prueba) | URL generada por Cloudinary en la carpeta prestafacil_firmas | IP registrada al momento de firmar</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Sección de Riesgos -->
+        <div class="section">
+            <h2 class="section-title">7. Riesgos</h2>
+            <table>
+                <tr>
+                    <th>Riesgo</th>
+                    <th>Probabilidad</th>
+                    <th>Impacto</th>
+                    <th>Mitigación</th>
+                </tr>
+                <tr>
+                    <td>Incompatibilidad con navegadores o dispositivos móviles en el formulario de solicitud</td>
+                    <td>Media</td>
+                    <td>Medio</td>
+                    <td>Realizar pruebas de compatibilidad en múltiples dispositivos y navegadores antes del despliegue.</td>
+                </tr>
+                <tr>
+                    <td>Fallas en la integración con el servicio de correo (Nodemailer/Gmail)</td>
+                    <td>Baja</td>
+                    <td>Alto</td>
+                    <td>Validar el envío real de correos de confirmación y manejar errores sin interrumpir el registro del cliente.</td>
+                </tr>
+                <tr>
+                    <td>Fallas en la subida de la firma digital a Cloudinary</td>
+                    <td>Baja</td>
+                    <td>Alto</td>
+                    <td>Implementar un plan B que guarde la firma en Base64 en la base de datos si Cloudinary falla.</td>
+                </tr>
+                <tr>
+                    <td>Faltas en la validación de datos de entrada del cliente (campos vacíos, documentos duplicados)</td>
+                    <td>Alta</td>
+                    <td>Medio</td>
+                    <td>Asegurar validación completa en el controlador antes de insertar en la base de datos (ya implementado y probado con Jest).</td>
+                </tr>
+                <tr>
+                    <td>Caídas o latencia en la conexión a la base de datos MySQL</td>
+                    <td>Media</td>
+                    <td>Alto</td>
+                    <td>Monitorear el pool de conexiones y probar el comportamiento del sistema cuando MySQL no está disponible.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Sección de Casos de Prueba Ejecutados -->
+        <div class="section">
+            <h2 class="section-title">8. Casos de prueba ejecutados</h2>
+            <table>
+                <tr>
+                    <th>No</th>
+                    <th>Caso de prueba</th>
+                    <th>Prioridad</th>
+                    <th>Datos de entrada</th>
+                    <th>Resultado esperado</th>
+                    <th>Resultado obtenido</th>
+                    <th>Estado</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Validar inicio de sesión con credenciales correctas</td>
+                    <td>Alta</td>
+                    <td>usuario: admin, contraseña: admin123</td>
+                    <td>Código 200, token generado</td>
+                    <td>Código 200, token generado correctamente</td>
+                    <td class="estado-aprobado">Aprobado</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Registro de nueva solicitud de crédito</td>
+                    <td>Alta</td>
+                    <td>Datos completos del cliente</td>
+                    <td>Código 201, cliente creado</td>
+                    <td>Código 201, cliente creado con ID asignado</td>
+                    <td class="estado-aprobado">Aprobado</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Firma digital del pagaré</td>
+                    <td>Alta</td>
+                    <td>ID de cliente + firma en Base64</td>
+                    <td>Código 200, documentoFirmado: true</td>
+                    <td>Pendiente de ejecución / captura</td>
+                    <td class="estado-pendiente">Pendiente</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Sección de Realizadores -->
+        <div class="realizadores">
+            <p><strong>Realizadores:</strong></p>
+            <p>Andrés Felipe Marín Patiño - Aprendiz SENA</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2026 Proyecto PrestaFácil / Finanpanorama. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</body>
+
+</html>
