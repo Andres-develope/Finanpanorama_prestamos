@@ -24,7 +24,7 @@ CREATE TABLE clientes (
     -- Datos personales
     nombre VARCHAR(100) NOT NULL,
     apellido VARCHAR(100) NOT NULL,
-    email VARCHAR(150) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
     tipo_documento ENUM('CC', 'CE', 'PA') DEFAULT 'CC',
     numero_documento VARCHAR(20) NOT NULL UNIQUE,
     celular VARCHAR(20) NOT NULL,

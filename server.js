@@ -38,6 +38,9 @@ app.use((req, res, next) => {
 // RUTAS
 // ============================================
 
+// Health check (para UptimeRobot / Render)
+app.get('/health', (req, res) => res.json({ status: 'ok' }));
+
 // API de autenticación
 app.use('/api/auth', authRoutes);
 
@@ -94,10 +97,6 @@ async function startServer() {
         console.log('║  🔐 Panel Admin:                                       ║');
         console.log(`║     • Login:        http://localhost:${PORT}/admin/login    ║`);
         console.log(`║     • Clientes:     http://localhost:${PORT}/admin/clientes ║`);
-        console.log('║                                                        ║');
-        console.log('║  👤 Credenciales Admin:                                ║');
-        console.log('║     • Usuario: admin                                   ║');
-        console.log('║     • Password: admin123                               ║');
         console.log('╚════════════════════════════════════════════════════════╝');
         console.log('');
     });

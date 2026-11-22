@@ -53,6 +53,28 @@ describe('clienteController.create', () => {
         expect(Cliente.findByDocumento).toHaveBeenCalledWith('123');
         expect(res.status).toHaveBeenCalledWith(409);
     });
+
+    test('Caso 9: correo ya existe -> 409 (no duplica cliente)', async () => {
+        const req = {
+            body: {
+                nombre: 'Andrés', apellido: 'Fell', email: 'a@test.com',
+                numeroDocumento: '456', celular: '3000000000',
+                direccion: 'Calle 1', ciudad: 'Bogotá', cantidad: 500000
+            }
+        };
+        const res = mockResponse();
+
+        Cliente.findByDocumento.mockResolvedValue(null);
+        Cliente.findByEmail.mockResolvedValue({ id: 1, email: 'a@test.com' });
+
+        await clienteController.create(req, res);
+
+        expect(Cliente.findByEmail).toHaveBeenCalledWith('a@test.com');
+        expect(res.status).toHaveBeenCalledWith(409);
+        expect(res.json).toHaveBeenCalledWith(
+            expect.objectContaining({ error: expect.stringContaining('correo') })
+        );
+    });
 });
 
 describe('clienteController.getById', () => {

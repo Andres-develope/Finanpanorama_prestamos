@@ -55,9 +55,15 @@ const clienteController = {
             }
 
             // Verificar si ya existe un cliente con ese documento
-            const existente = await Cliente.findByDocumento(numeroDocumento);
-            if (existente) {
+            const existentePorDocumento = await Cliente.findByDocumento(numeroDocumento);
+            if (existentePorDocumento) {
                 return res.status(409).json({ error: 'Ya existe un cliente con ese número de documento' });
+            }
+
+            // Verificar si ya existe un cliente con ese correo
+            const existentePorEmail = await Cliente.findByEmail(email);
+            if (existentePorEmail) {
+                return res.status(409).json({ error: 'Ya existe un cliente con ese correo electrónico' });
             }
 
             const cliente = await Cliente.create(req.body);

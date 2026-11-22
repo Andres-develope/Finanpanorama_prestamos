@@ -87,6 +87,19 @@ class Cliente {
     }
 
     /**
+     * Buscar un cliente por correo electrónico.
+     * @param {string} email
+     * @returns {Promise<Object|null>}
+     */
+    static async findByEmail(email) {
+        const rows = await query(
+            'SELECT * FROM clientes WHERE email = ?',
+            [email]
+        );
+        return rowToCliente(rows[0] || null);
+    }
+
+    /**
      * Crear un nuevo cliente en la base de datos.
      * @param {Object} data - Datos del formulario de solicitud
      * @returns {Promise<Object>} Cliente creado con su ID asignado

@@ -5,8 +5,8 @@
 
 // Credenciales de administrador (en producción usar base de datos y bcrypt)
 const ADMIN_CREDENTIALS = {
-    username: 'admin',
-    password: 'admin123'  // Cambiar en producción
+    username: process.env.ADMIN_USER || 'admin',
+    password: process.env.ADMIN_PASSWORD || 'admin123'  // Definir ADMIN_PASSWORD en producción
 };
 
 // Sesiones activas (en producción usar Redis o base de datos)

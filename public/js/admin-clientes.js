@@ -94,7 +94,10 @@ function renderClientes(data) {
             '<td><span class="badge ' + (c.estado === 'aprobado' ? 'badge-approved' : 'badge-pending') + '">' +
             (c.estado === 'aprobado' ? '✓ Firmado' : '⏳ Pendiente') + '</span></td>' +
             '<td>' + formatDate(c.fecha_registro || c.fechaRegistro) + '</td>' +
-            '<td><a href="/pagare/' + c.id + '" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">📄 Ver Pagaré</a></td>' +
+            '<td><div class="acciones-cell">' +
+            '<a href="/pagare/' + c.id + '" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">📄 Ver Pagaré</a>' +
+            '<button onclick="eliminarCliente(' + c.id + ')" class="btn btn-danger" style="padding: 0.5rem 1rem; font-size: 0.85rem;">🗑️ Eliminar</button>' +
+            '</div></td>' +
             '</tr>';
     }).join('');
 }
@@ -117,4 +120,27 @@ function logout() {
         localStorage.removeItem('adminToken');
         window.location.href = '/admin/login';
     });
+}
+
+async function eliminarCliente(id) {
+    var confirmado = confirm('¿Seguro que deseas eliminar este cliente? Esta acción no se puede deshacer.');
+    if (!confirmado) return;
+
+    try {
+        var res = await fetch('/api/clientes/' + id, {
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer ' + token }
+        });
+
+        if (!res.ok) {
+            var data = await res.json();
+            alert(data.error || 'No se pudo eliminar el cliente');
+            return;
+        }
+
+        await loadData();
+    } catch (err) {
+        console.error('Error eliminando cliente', err);
+        alert('Error al eliminar el cliente');
+    }
 }

@@ -24,6 +24,12 @@ document.getElementById('solicitudForm').addEventListener('submit', async functi
 
     console.log('Enviando datos:', data);
 
+    // Deshabilitar el botón mientras se procesa la solicitud para evitar doble envío
+    var submitBtn = e.target.querySelector('button[type="submit"]');
+    var textoOriginal = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+
     try {
         var res = await fetch('/api/clientes', {
             method: 'POST',
@@ -40,13 +46,17 @@ document.getElementById('solicitudForm').addEventListener('submit', async functi
             // Guardar el ID en sessionStorage como backup
             sessionStorage.setItem('ultimoClienteId', result.id);
             setTimeout(function () { window.location.href = '/pagare/' + result.id; }, 1000);
+            return;
         } else if (res.status === 409) {
-            showToast('Ya existe una solicitud con ese número de documento. Usa un documento diferente.', 'error');
+            showToast(result.error || 'Ya existe una solicitud con esos datos. Usa un documento o correo diferente.', 'error');
         } else {
             showToast(result.error || 'Error al enviar la solicitud', 'error');
         }
     } catch (err) {
         console.error('Error:', err);
         showToast('Error de conexión al servidor', 'error');
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = textoOriginal;
     }
 });

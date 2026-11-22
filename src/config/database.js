@@ -25,6 +25,11 @@ const dbConfig = {
     charset: 'utf8mb4'
 };
 
+// TiDB Cloud / Aiven exigen TLS: activar con DB_SSL=true
+if (process.env.DB_SSL === 'true') {
+    dbConfig.ssl = { minVersion: 'TLSv1.2', rejectUnauthorized: true };
+}
+
 // Crear pool de conexiones
 const pool = mysql.createPool(dbConfig);
 
