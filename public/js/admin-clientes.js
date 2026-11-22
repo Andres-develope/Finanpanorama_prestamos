@@ -83,18 +83,18 @@ function renderClientes(data) {
 
     tbody.innerHTML = data.map(function (c) {
         return '<tr>' +
-            '<td><strong>#' + c.id + '</strong></td>' +
-            '<td><div>' +
+            '<td data-label="ID"><strong>#' + c.id + '</strong></td>' +
+            '<td data-label="Cliente"><div>' +
             '<strong>' + c.nombre + ' ' + c.apellido + '</strong>' +
             '<div style="font-size: 0.85rem; color: var(--text-muted);">' + c.email + '</div>' +
             '</div></td>' +
-            '<td>' + (c.tipo_documento || c.tipoDocumento) + ' ' + (c.numero_documento || c.numeroDocumento) + '</td>' +
-            '<td>' + c.celular + '</td>' +
-            '<td><strong style="color: var(--success);">' + formatCurrency(c.cantidad) + '</strong></td>' +
-            '<td><span class="badge ' + (c.estado === 'aprobado' ? 'badge-approved' : 'badge-pending') + '">' +
+            '<td data-label="Documento">' + (c.tipo_documento || c.tipoDocumento) + ' ' + (c.numero_documento || c.numeroDocumento) + '</td>' +
+            '<td data-label="Celular">' + c.celular + '</td>' +
+            '<td data-label="Monto"><strong style="color: var(--success);">' + formatCurrency(c.cantidad) + '</strong></td>' +
+            '<td data-label="Estado"><span class="badge ' + (c.estado === 'aprobado' ? 'badge-approved' : 'badge-pending') + '">' +
             (c.estado === 'aprobado' ? '✓ Firmado' : '⏳ Pendiente') + '</span></td>' +
-            '<td>' + formatDate(c.fecha_registro || c.fechaRegistro) + '</td>' +
-            '<td><div class="acciones-cell">' +
+            '<td data-label="Fecha">' + formatDate(c.fecha_registro || c.fechaRegistro) + '</td>' +
+            '<td data-label="Acciones"><div class="acciones-cell">' +
             '<a href="/pagare/' + c.id + '" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">📄 Ver Pagaré</a>' +
             '<button onclick="eliminarCliente(' + c.id + ')" class="btn btn-danger" style="padding: 0.5rem 1rem; font-size: 0.85rem;">🗑️ Eliminar</button>' +
             '</div></td>' +
