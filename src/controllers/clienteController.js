@@ -68,8 +68,8 @@ const clienteController = {
 
             const cliente = await Cliente.create(req.body);
             
-            // Enviamos el correo usando Nodemailer (gratis e ilimitado para enviar al correo del cliente real)
-            await enviarCorreoConfirmacion(cliente.email, cliente.nombre);
+            // No se espera el correo: si el SMTP está bloqueado (Render Free) no debe colgar la respuesta
+            enviarCorreoConfirmacion(cliente.email, cliente.nombre).catch(() => {});
 
             res.status(201).json(cliente);
         } catch (error) {
